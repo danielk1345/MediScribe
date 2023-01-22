@@ -11,8 +11,8 @@ app.get("/", async (req, res) => {
 
     const msg = {
       // to: "matthewelliottkeller@gmail.com", // Change to your recipient
-      to: "m6keller@uwaterloo.ca",
-      from: "ll2lau@uwaterloo.ca", // Change to your verified sender
+      to: "e6hsu@uwaterloo.ca",
+      from: "ethanh812123@gmail.com", // Change to your verified sender
       // from: "leo233257@gmail.com",
       subject: "Sending with SendGrid is Fun",
       text: "and easy to do anywhere, even with Node.js",

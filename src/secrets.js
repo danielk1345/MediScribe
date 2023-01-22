@@ -1,0 +1,1 @@
+export const REACT_APP_TRANSLATE_KEY = "01451fa85fc64603b0eddd0a49b7ffd9";
