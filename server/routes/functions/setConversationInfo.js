@@ -7,6 +7,7 @@ export const setConversationInfo = async (req, res) => {
     conversationInfo: body.conversationInfo,
     title: body.title,
     doctorName: body.doctorName,
+    timestamp: Date.now(),
   });
 
   try {

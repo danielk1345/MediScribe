@@ -41,6 +41,10 @@ const curUserSchema = new mongoose.Schema(
       require: true,
       type: Array,
     },
+    timestamp: {
+      require: true,
+      type: Number,
+    },
   },
   { collection: "user_info" }
 );
