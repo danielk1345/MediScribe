@@ -53,24 +53,15 @@ const RecordPageRetry = () => {
         );
       } else {
         console.log(
-          "\r\n(recognized)  Reason: " +
-            ResultReason[e.result.reason] +
-            " Text: " +
             e.result.text
         );
+        setInput(e.result.text)
       }
     };
 
     newRecognizer.recognizing = function (s, e) {
-      var str =
-        "(recognizing) Reason: " +
-        ResultReason[e.result.reason] +
-        " Text: " +
-        e.result.text;
-      console.log(str);
     };
 
-    // console.log("\r\n(recognized)  Reason: " + sdk.ResultReason[e.result.reason] + " Text: " + e.result.text);
 
     setRecognizer(newRecognizer);
   }, [data]);
@@ -88,7 +79,7 @@ const RecordPageRetry = () => {
     console.log("starting continous recording", recognizer);
     recognizer.startContinuousRecognitionAsync((result) => {
       if (result.reason === ResultReason.RecognizedSpeech)
-        setInput(`RECOGNIZED: Text=${result.text}`);
+        setInput(`${result.text}`);
       else
         setInput(
           "ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly."
@@ -98,11 +89,7 @@ const RecordPageRetry = () => {
 
   const StopRecording = () => {
     setRecording(false);
-    console.log("recognizer stop recording", recognizer);
     recognizer.stopContinuousRecognitionAsync((res) => {
-      console.log("res", res);
-
-      console.log("Finished Recording");
     });
   };
 
