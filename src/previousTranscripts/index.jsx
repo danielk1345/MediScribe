@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { getTranscriptions } from "../api/getTranscriptions.js";
 import { deleteTranscript } from "../api/deleteTranscript.js";
 import { getAuth } from "firebase/auth";
+import { SendPopup } from "./sendPopup.js";
+
 
 const PreviousTranscripts = () => {
   const [transcriptInfo, setTranscriptInfo] = useState();
   const [curTranscript, setCurTranscript] = useState();
-
+  const [popOpen, setPopOpen] = useState(false);
   const auth = getAuth();
   const user = auth.currentUser;
 
@@ -35,7 +37,6 @@ const PreviousTranscripts = () => {
           )
         : null)();
   }, [curTranscript]);
-
   return (
     <div className="prev-transcript-container">
       <div className="transcript">
@@ -46,11 +47,12 @@ const PreviousTranscripts = () => {
           </div>
         </div>
         <div className="action-button-container">
-          <div onClick={() => {}} className="action-button">
-            <div onClick={() => {}} style={{ order: 0, color: "#1D3557" }}>
-              Send Transcript
-            </div>
-          </div>
+          <button className="action-button" onClick={() => {setPopOpen(true)}} style={{ order: 0, color: "#1D3557" }}>
+            Send Transcript
+          </button>
+          {popOpen?
+          <SendPopup open={popOpen} toggle={()=>setPopOpen(false)}> 
+          </SendPopup>:''}
           <div
             onClick={() => {
               console.log("running");
