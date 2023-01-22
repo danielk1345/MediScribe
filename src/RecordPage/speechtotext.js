@@ -3,7 +3,6 @@ import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
 async function SpeechToText() {
-    console.log("speechkey", process.env.SPEECH__KEY)
     const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(process.env.SPEECH__KEY, tokenObj.region.SPEECH__REGION);
     speechConfig.speechRecognitionLanguage = 'en-US';
     const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
