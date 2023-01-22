@@ -1,26 +1,9 @@
 import mongoose from "mongoose";
 
-const dataSchema = new mongoose.Schema({
-  name: {
-    required: true,
-    type: String,
-  },
-  age: {
-    required: true,
-    type: Number,
-  },
-});
-
-export const Model = mongoose.model("Data", dataSchema);
-
 const conversationInfoSchema = new mongoose.Schema(
   {
-    uuid: {
+    userId: {
       required: true,
-      type: String,
-    },
-    conversationInfo: {
-      require: true,
       type: String,
     },
     timestamp: {
@@ -44,7 +27,7 @@ export const ConvoInfoModel = mongoose.model(
   conversationInfoSchema
 );
 
-const userInfoSchema = new mongoose.Schema(
+const curUserSchema = new mongoose.Schema(
   {
     name: {
       required: true,
@@ -58,12 +41,8 @@ const userInfoSchema = new mongoose.Schema(
       require: true,
       type: Array,
     },
-    timestamp: {
-      require: true,
-      type: Date,
-    },
   },
-  { collection: "userInfo" }
+  { collection: "user_info" }
 );
 
-export const UserInfoModel = mongoose.model("UserInfo", userInfoSchema);
+export const UserInfoModel = mongoose.model("UserInfo", curUserSchema);

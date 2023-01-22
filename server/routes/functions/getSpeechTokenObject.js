@@ -1,12 +1,7 @@
 import axios from "axios";
-// const bodyParser = require("body-parser");
-// const pino = require("express-pino-logger")();
 
 import dotenv from "dotenv";
 dotenv.config();
-
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(pino);
 
 export const getSpeechTokenObject = async (req, res) => {
   res.setHeader("Content-Type", "application/json");
