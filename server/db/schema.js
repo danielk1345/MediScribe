@@ -44,26 +44,13 @@ export const ConvoInfoModel = mongoose.model(
   conversationInfoSchema
 );
 
-const userInfoSchema = new mongoose.Schema(
-  {
-    name: {
-      required: true,
-      type: String,
-    },
-    uuid: {
-      required: true,
-      type: String,
-    },
-    conversations: {
-      require: true,
-      type: Array,
-    },
-    timestamp: {
-      require: true,
-      type: Date,
-    },
+export const userInfoBaseSchema = {
+  name: {
+    required: true,
+    type: String,
   },
-  { collection: "userInfo" }
-);
-
-export const UserInfoModel = mongoose.model("UserInfo", userInfoSchema);
+  conversations: {
+    require: true,
+    type: Array,
+  },
+};

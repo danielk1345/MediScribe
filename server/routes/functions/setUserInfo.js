@@ -1,13 +1,16 @@
-import { UserInfoModel } from "../../db/schema.js";
+import { userInfoBaseSchema } from "../../db/schema.js";
+import mongoose from "mongoose";
 
 export const setUserInfo = async (req, res) => {
   try {
-    console.log("req", req.params);
+    const curUserSchema = new mongoose.Schema(userInfoBaseSchema, {
+      collection: req.body.uuid,
+    });
+
+    const UserInfoModel = mongoose.model("UserInfo", curUserSchema);
     const data = new UserInfoModel({
-      name: req.params.name,
-      uuid: req.params.uuid,
+      name: req.body.name,
       conversations: [],
-      timestamp: Timestamp.now(),
     });
     const dataToSave = await data.save();
     res.status(200).json(dataToSave);

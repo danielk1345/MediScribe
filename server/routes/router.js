@@ -21,9 +21,11 @@ router.post("/post", async (req, res) => {
   }
 });
 
-router.post("/set-user", async (req, res) => setUserInfo(req, res));
-router.get("/speech-token-object", async (req, res) =>
-  getSpeechTokenObject(req, res)
-);
+router.post("/set-user", async (req, res) => {
+  setUserInfo(req, res);
+});
+router.get("/speech-token-object", async (req, res) => {
+  getSpeechTokenObject(req, res);
+});
 
 export { router };
