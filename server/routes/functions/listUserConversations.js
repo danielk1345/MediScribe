@@ -1,6 +1,6 @@
 import { ConvoInfoModel, UserInfoModel } from "../../db/schema.js";
 
-export const getConversations = async (req, res) => {
+export const listConversations = async (req, res) => {
   try {
     const conversations = await getAllUserConvoInfo(req.body.userId);
     res.status(200).json({ conversations: conversations });

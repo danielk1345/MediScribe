@@ -3,7 +3,8 @@ import { Model } from "../db/schema.js";
 import { setUserInfo } from "./functions/setUserInfo.js";
 import { getSpeechTokenObject } from "./functions/getSpeechTokenObject.js";
 import { setConversationInfo } from "./functions/setConversationInfo.js";
-import { getConversations } from "./functions/getUserConversations.js";
+import { listConversations } from "./functions/listUserConversations.js";
+import { getUserInfo } from "./functions/getUserInfo.js";
 
 const router = express.Router();
 
@@ -33,6 +34,8 @@ router.get("/speech-token-object", async (req, res) => {
   getSpeechTokenObject(req, res);
 });
 
-router.get("/user-convo-info", async (req, res) => getConversations(req, res));
+router.get("/user-convo-info", async (req, res) => listConversations(req, res));
+
+router.get("/user-info", async (req, res) => getUserInfo(req, res));
 
 export { router };
