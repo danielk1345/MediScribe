@@ -1,28 +1,34 @@
 import express from "express";
-import sgMail from '@sendgrid/mail'
-import dotenv from "dotenv"
+import sgMail from "@sendgrid/mail";
+import dotenv from "dotenv";
 dotenv.config();
-const app = express()
+const app = express();
 
-app.get('/', (req,res)=>{
+app.get("/", async (req, res) => {
+  try {
     // const sgMail = require('@sendgrid/mail')
-    sgMail.setApiKey(process.env.TWILIO)
-    console.log(process.env.REACT_APP_TWILIO)
-    const msg = {
-    to: 'leo233257@gmail.com', // Change to your recipient
-    from: 'll2lau@uwaterloo.ca', // Change to your verified sender
-    subject: 'Sending with SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    }
-    sgMail
-    .send(msg)
-    .then(() => {
-        console.log('Email sent')
-    })
-    .catch((error) => {
-        console.error(error)
-    })
-})
+    console.log("get request");
+    console.log(process.env.TWILIO);
+    sgMail.setApiKey(process.env.TWILIO);
 
-app.listen(8080)
+    const msg = {
+      to: "leo233257@gmail.com", // Change to your recipient
+      //   from: "ll2lau@uwaterloo.ca", // Change to your verified sender
+      from: "leo233257@gmail.com",
+      subject: "Sending with SendGrid is Fun",
+      text: "and easy to do anywhere, even with Node.js",
+      html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+    };
+    const sent = await sgMail.send(msg);
+
+    console.log("sent", sent);
+  } catch (error) {
+    console.log("error", error);
+    console.log("error.,,,,", error.response.body.errors);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.listen(8080, () => {
+  console.log(`Example app listening on port ${8080}`);
+});
