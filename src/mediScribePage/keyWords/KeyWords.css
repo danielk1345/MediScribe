@@ -1,0 +1,31 @@
+.key-word-box {
+  background-color: #ccdde4;
+  height: 100%;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.word-inner-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  height: 90%;
+}
+.word-container {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  height: 70%;
+  width: 100%;
+  align-self: center;
+  border-radius: 20px;
+  padding: 15px;
+  word-wrap: break-word;
+  overflow: auto;
+}
+.word-text {
+  font-size: 20px;
+}
