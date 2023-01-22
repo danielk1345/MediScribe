@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { router } from "./routes/router.js";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
@@ -20,6 +21,12 @@ database.once("connected", () => {
   console.log("Database Connected");
 });
 
+var corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/", router);
 
