@@ -17,7 +17,7 @@ const TextBox = () => {
         <Link
           to="/MediScribe"
           style={{
-            "text-decoration": "none",
+            textDecoration: "none",
             color: "white",
             fontWeight: "500",
           }}
