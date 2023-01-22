@@ -12,7 +12,7 @@ export const setConversationInfo = async (req, res) => {
   try {
     const dataToSave = await data.save();
 
-    let userDoc = await UserInfoModel.findOne({ uuid: body.userId });
+    const userDoc = await UserInfoModel.findOne({ uuid: body.userId });
     userDoc.conversations.push(dataToSave._id);
 
     userDoc.save();
