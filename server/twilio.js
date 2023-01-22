@@ -22,9 +22,10 @@ app.get("/", async (req, res) => {
     const sent = await sgMail.send(msg);
 
     console.log("sent", sent);
+    res.status(200).json({ response: sent });
   } catch (error) {
     console.log("error", error);
-    console.log("error.,,,,", error.response.body.errors);
+    console.log("error.,,,,", error?.response?.body?.errors);
     res.status(400).json({ error: error.message });
   }
 });
