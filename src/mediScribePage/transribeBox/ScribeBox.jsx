@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Highlighter from "react-highlight-words";
 import PopUp from "./PopUp";
+import { REACT_APP_TRANSLATE_KEY } from "../../secrets";
 
-const ScribeBox = ({ recording, transcribing, matchingWords, input }) => {
+const ScribeBox = ({ recording, transcribing, matchingWords, input, lang }) => {
   const [word, setWord] = useState("");
   const [openPopup, setOpenPopup] = useState(false);
 
@@ -17,6 +18,7 @@ const ScribeBox = ({ recording, transcribing, matchingWords, input }) => {
             openPopup={openPopup}
             word={word}
             togglePopup={() => setOpenPopup(false)}
+            lang={lang}
           />
         ) : (
           ""

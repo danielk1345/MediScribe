@@ -1,6 +1,6 @@
 import PastTranscriptionTitle from "./pastTranscriptionTitles.jsx";
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useEffect, useInsertionEffect, useState } from "react";
 import { getTranscriptions } from "../api/getTranscriptions.js";
 import { deleteTranscript } from "../api/deleteTranscript.js";
 import { getAuth } from "firebase/auth";
@@ -37,6 +37,7 @@ const PreviousTranscripts = () => {
           )
         : null)();
   }, [curTranscript]);
+
   return (
     <div className="prev-transcript-container">
       <div className="transcript">
@@ -55,10 +56,17 @@ const PreviousTranscripts = () => {
           </SendPopup>:''}
           <div
             onClick={() => {
-              console.log("running");
+              console.log("curTranscript._id: ", curTranscript._id);
+              console.log("user.uid: ", user.uid);
               deleteTranscript(curTranscript._id, user.uid).then((res) =>
                 console.log(res)
               );
+              setTranscriptInfo(
+                transcriptInfo.filter(
+                  (info) => info?.[0]?._id !== curTranscript._id
+                )
+              );
+
               setCurTranscript(null);
             }}
             className="action-button"
@@ -71,21 +79,22 @@ const PreviousTranscripts = () => {
       <div className="transcript-list-container">
         <div className="transcript-list-header">Transcript List</div>
         <div className="transcript-titles">
-          {
-            // transcriptInfo &&
-            //   transcriptInfo.filter(
-            //     (transcriptInfo) => transcriptInfo?.[0]?.timestamp !== undefined
-            //   )
-            // .map((transcriptInfo, i) =>
-            //   transcriptInfo?.[i]?.timestamp !== undefined ? (
-            //     <PastTranscriptionTitle
-            //       transcriptionInfo={{
-            //         timestamp: transcriptInfo?.[i]?.timestamp,
-            //         order: i,
-            //       }}
-            //     />
-            // ))
-          }
+          {transcriptInfo &&
+            transcriptInfo
+              .filter((info) => info?.[0]?.timestamp !== undefined)
+              .map((info, i) => {
+                console.log(info);
+                return i < 6 ? (
+                  <div onClick={() => setCurTranscript(info?.[0])}>
+                    <PastTranscriptionTitle
+                      transcriptionInfo={{
+                        timestamp: info?.[i]?.timestamp,
+                        order: i,
+                      }}
+                    />
+                  </div>
+                ) : null;
+              })}
         </div>
       </div>
     </div>
