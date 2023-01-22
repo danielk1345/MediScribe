@@ -70,7 +70,7 @@
   /* align-items: flex-start; */
   justify-content: space-around;
   /* justify-content: center; */
-
+  margin-bottom: 10px;
   flex: none;
   /* gap: 260px; */
   order: 2;

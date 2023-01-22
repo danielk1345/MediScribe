@@ -21,13 +21,14 @@ export const SendPopup = ({ open, toggle, curTranscript }) => {
     setRecEmail(event.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(`${host}/twilio`, {
+    const ret = await fetch(`${host}/twilio`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email_text: curTranscript.transcript }),
     });
+    console.log("email ret", ret);
   };
 
   return (
