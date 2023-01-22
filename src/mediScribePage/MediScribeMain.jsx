@@ -138,9 +138,9 @@ const MediScribeMain = () => {
     // setRecording(false);
     console.log(recognizer);
     recognizer?.stopContinuousRecognitionAsync((res) => {});
-    setTranscript(user.uid, input, "random title", user.displayName);
-    console.log("setting the following to mongo:", input);
-    setTranscript(user.uid, input, "random title", user.displayName);
+    // setTranscript(user.uid, input, "random title", user.displayName);
+    // console.log("setting the following to mongo:", input);
+    // setTranscript(user.uid, input, "random title", user.displayName);
   };
 
   return (

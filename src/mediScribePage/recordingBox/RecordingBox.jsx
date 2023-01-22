@@ -15,16 +15,6 @@ const RecordingBox = ({
   console.log("user.uid", user.uid);
 
   const handleClickRecord = () => {
-    const exampleTranscript =
-      "Hello Mr. Park, I have gone over your test results and we have found a benign tumour. I believe it should not affect your daily life therefore there is no need for chemotherapy or any surgical interventions. We will continue to monitor the tumour and I will askthe nurse to book a couple of MRI appointments for you.";
-    if (recording) {
-      setTranscript(
-        user.uid,
-        exampleTranscript,
-        "add title here if u want",
-        user.displayName
-      );
-    }
     changeRecording(!recording);
   };
 
