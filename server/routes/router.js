@@ -5,12 +5,15 @@ import { setConversationInfo } from "./functions/setConversationInfo.js";
 import { listConversations } from "./functions/listUserConversations.js";
 import { getUserInfo } from "./functions/getUserInfo.js";
 import { deleteTranscript } from "./functions/deleteTranscript.js";
+import { sendEmail } from "../twilio.js";
 
 const router = express.Router();
 
 router.post("/set-user", async (req, res) => {
   setUserInfo(req, res);
 });
+
+router.post("/twilio", async (req, res) => sendEmail(req, res));
 
 router.post("/set-convo", async (req, res) => setConversationInfo(req, res));
 
