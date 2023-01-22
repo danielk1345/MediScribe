@@ -1,14 +1,14 @@
 import { UserInfoModel } from "../../db/schema.js";
+import mongoose from "mongoose";
 
 export const setUserInfo = async (req, res) => {
   try {
-    console.log("req", req.params);
     const data = new UserInfoModel({
-      name: req.params.name,
-      uuid: req.params.uuid,
+      name: req.body.name,
+      uuid: req.body.uuid,
       conversations: [],
-      timestamp: Timestamp.now(),
     });
+
     const dataToSave = await data.save();
     res.status(200).json(dataToSave);
   } catch (error) {

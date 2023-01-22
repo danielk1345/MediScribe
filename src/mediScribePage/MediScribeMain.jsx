@@ -3,6 +3,7 @@ import Live from "./Live";
 import Previous from "./Previous";
 import Header from "./Header";
 import "./mediScribePage.css";
+import PreviousTranscripts from "../previousTranscripts";
 
 const MediScribeMain = () => {
   const [page, setPage] = useState(true);
@@ -45,7 +46,7 @@ const MediScribeMain = () => {
             changeRecording={changeRecording}
           />
         ) : (
-          <Previous />
+          <PreviousTranscripts />
         )}
       </div>
     </div>

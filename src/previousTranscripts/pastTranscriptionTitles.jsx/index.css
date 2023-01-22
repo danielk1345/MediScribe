@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  justify-content: center;
+  background-color: #f9f9f9;
+  height: 5px;
+  text-align: center;
+  align-items: center;
+}
+
+.text {
+  text-align: center;
+  color: black;
+  font-weight: 500;
+}

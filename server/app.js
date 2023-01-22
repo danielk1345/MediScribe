@@ -13,17 +13,13 @@ const connectionString = process.env.MONGODB_URI;
 mongoose.connect(connectionString);
 const database = mongoose.connection;
 
-database.on("error", (error) => {
-  console.log(error);
-});
+database.on("error", (error) => console.log(error));
 
-database.once("connected", () => {
-  console.log("Database Connected");
-});
+database.once("connected", () => console.log("Database Connected"));
 
 var corsOptions = {
   origin: "http://localhost:3000",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
@@ -35,6 +31,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
+  console.log("connectionString", connectionString);
   console.log(`Example app listening on port ${PORT}`);
 });
 
