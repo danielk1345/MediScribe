@@ -15,12 +15,8 @@ export const Model = mongoose.model("Data", dataSchema);
 
 const conversationInfoSchema = new mongoose.Schema(
   {
-    uuid: {
+    userId: {
       required: true,
-      type: String,
-    },
-    conversationInfo: {
-      require: true,
       type: String,
     },
     timestamp: {

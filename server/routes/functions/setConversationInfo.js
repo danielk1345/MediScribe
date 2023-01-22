@@ -1,15 +1,16 @@
-import { Model, ConvoInfoModel } from "../../db/schema.js";
+import { ConvoInfoModel } from "../../db/schema.js";
 
-export const setConversationInfo = async () => {
+export const setConversationInfo = async (req, res) => {
+  const body = req.body;
   const data = new ConvoInfoModel({
-    name: "rand_name", //req.body.name,
-    age: 9090, // req.body.age,
+    userId: body.userId,
+    conversationInfo: body.conversationInfo,
+    title: body.title,
+    doctorName: body.doctorName,
   });
 
   try {
-    console.log("data", data);
     const dataToSave = await data.save();
-    console.log("dataToSave", dataToSave);
     res.status(200).json(dataToSave);
   } catch (error) {
     res.status(400).json({ message: error.message });
