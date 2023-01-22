@@ -1,86 +1,89 @@
 .overlay {
-    position: absolute;
-    width: 766px;
-    height: 315px;
-    left: 257px;
-    top: 259px;
+  position: absolute;
+  width: 766px;
+  height: 315px;
+  left: 257px;
+  top: 259px;
 
-    background: #5BA3BB;
-    border-radius: 20px;
+  background: #5ba3bb;
+  border-radius: 20px;
 }
 
 .form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
 
 .youName {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 20px;
-    top: 50px;
-    background: #F9F9F9;
-    border-radius: 10px;
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  left: 20px;
+  top: 50px;
+  background: #f9f9f9;
+  border-radius: 10px;
 }
 
 .yourEmail {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 20px;
-    top: 120px;
-    background: #F9F9F9;
-    border-radius: 10px;
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  left: 20px;
+  top: 120px;
+  background: #f9f9f9;
+  border-radius: 10px;
 }
 
 .recName {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 20px;
-    top: 185px;
-    background: #F9F9F9;
-    border-radius: 10px;
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  left: 20px;
+  top: 185px;
+  background: #f9f9f9;
+  border-radius: 10px;
 }
 
 .recEmail {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 20px;
-    top: 250px;
-    background: #F9F9F9;
-    border-radius: 10px;
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  left: 20px;
+  top: 250px;
+  background: #f9f9f9;
+  border-radius: 10px;
 }
 label {
-    
-    font-size: 20px;
-    font-weight: 500;
-    width: 100%;
-    margin:auto;
-    text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
 input {
-    margin-left: 20px;
+  padding: 5px;
+  margin-left: 20px;
+  border-radius: 10px;
 }
 
 .submit-button {
-    position: absolute;
-    width: 200px;
-    height: 68px;
-    left: 500px;
-    top: 150px;
-    
-    background: #E1F1F8;
-    border-radius: 20px;
+  position: absolute;
+  width: 230px;
+  height: 75px;
+  left: 500px;
+  top: 150px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: -10px;
+  background: #e1f1f8;
+  border-radius: 20px;
 }
 
 .closing {
-    position: absolute;
+  position: absolute;
   font-weight: 900;
   color: #e63946;
   right: 10px;
