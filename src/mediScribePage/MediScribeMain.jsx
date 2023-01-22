@@ -13,6 +13,8 @@ import {
 } from "microsoft-cognitiveservices-speech-sdk";
 import Highlighter from "react-highlight-words";
 import { MedicalTerms } from "./medTerms";
+import { getAuth } from "firebase/auth";
+import { setTranscript } from "../api/setTranscript";
 
 const MediScribeMain = () => {
   const [masterString, setMasterString] = useState("");
@@ -33,6 +35,9 @@ const MediScribeMain = () => {
         return setData(res);
       });
   };
+
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   const changePage = (page) => {
     if (recording || transcribing) return;
@@ -123,10 +128,19 @@ const MediScribeMain = () => {
     }
   }, [doneRun]);
 
+  useEffect(() => {
+    if (masterString === null) return;
+    console.log("setting the following to mongo:", masterString);
+    setTranscript(user.uid, masterString, "random title", user.displayName);
+  }, [masterString]);
+
   const StopRecording = () => {
     // setRecording(false);
     console.log(recognizer);
     recognizer?.stopContinuousRecognitionAsync((res) => {});
+    // setTranscript(user.uid, input, "random title", user.displayName);
+    // console.log("setting the following to mongo:", input);
+    // setTranscript(user.uid, input, "random title", user.displayName);
   };
 
   return (
