@@ -1,10 +1,23 @@
-import { Link } from "react-router-dom";
+import TextBox from "./TextBox";
+import "./MainPage.css";
 
 const MainPage = () => {
   return (
-    <div>
-      <div>this is main page where there will be a sign in button</div>
-      <Link to="/MediScribe">Sign in</Link>
+    <div className="main-page-container">
+      <div className="header">
+        <img
+          src="logo.png"
+          alt="MediScribe logo"
+          width={100}
+          height={100}
+          className="logo"
+        />
+        <img src="mediScribeName.png" alt="MediScribe name" width={200} />
+      </div>
+      <div className="content">
+        <img src="stockImage.png" alt="Stock Image" width={420} />
+        <TextBox />
+      </div>
     </div>
   );
 };
