@@ -73,6 +73,10 @@
   margin-left: 5%;
   /* margin-right: 25%; */
 }
+.top-row-cont {
+  display: flex;
+  justify-content: space-between;
+}
 .close-popup {
   position: absolute;
   font-weight: 900;
