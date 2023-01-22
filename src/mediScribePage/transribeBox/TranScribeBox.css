@@ -1,0 +1,37 @@
+.transcribe-box {
+  width: 76%;
+  background-color: #ccdde4;
+  height: 100%;
+  border-radius: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.scribe-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+.inner-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+}
+.text-container {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  height: 70%;
+  width: 100%;
+  align-self: center;
+  border-radius: 20px;
+  padding: 20px;
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+.scribe-text {
+  font-size: 26px;
+}

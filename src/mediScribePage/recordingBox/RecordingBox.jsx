@@ -1,12 +1,24 @@
 import "./RecordingBox.css";
-const RecordingBox = () => {
-  const handleStartRecord = () => {
-    console.log("start record");
+import RecordingCircle from "./RecordingCircle";
+
+const RecordingBox = ({
+  recording,
+  transcribing,
+  changeTranscribing,
+  changeRecording,
+}) => {
+  const handleClickRecord = () => {
+    changeRecording(!recording);
   };
 
   return (
     <div className="recording-box">
-      <div onClick={handleStartRecord}>start recording</div>
+      <div className="recording-title">
+        {recording ? "Stop Recording" : "Start Recording"}
+      </div>
+      <div onClick={handleClickRecord}>
+        <RecordingCircle recording={recording} transcribing={transcribing} />
+      </div>
     </div>
   );
 };

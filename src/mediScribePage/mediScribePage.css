@@ -12,13 +12,14 @@
   height: 80px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  margin-bottom: 20px;
 }
 .medi-buttons {
   display: flex;
   justify-content: center;
 }
 .medi-button {
-  padding: 15px 105px;
+  padding: 12px 105px;
   font-weight: 500;
   font-size: 24px;
 }
@@ -39,6 +40,21 @@
   height: 100%;
 }
 .live-container {
-  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  height: 100%;
+}
+.bottom-one {
+  height: 25%;
+  width: 95%;
+  margin-bottom: 20px;
+}
+.top-two {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 75%;
+  margin-bottom: 20px;
 }
