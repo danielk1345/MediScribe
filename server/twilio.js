@@ -8,15 +8,16 @@ app.get("/", async (req, res) => {
   try {
     console.log("process.env.SENDGRID_API_KEY", process.env.SENDGRID_API_KEY);
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    let user_email = "ethanh812123@gmail.com";
+    let recip_email = "e6hsu@uwaterloo.ca";
+    let email_text = "Default";
 
     const msg = {
-      // to: "matthewelliottkeller@gmail.com", // Change to your recipient
-      to: "e6hsu@uwaterloo.ca",
-      from: "ethanh812123@gmail.com", // Change to your verified sender
-      // from: "leo233257@gmail.com",
-      subject: "Sending with SendGrid is Fun",
-      text: "and easy to do anywhere, even with Node.js",
-      html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+      to: recip_email,
+      from: user_email,
+      subject: "Transcript from MediScribe",
+      text: email_text,
+      html: "<strong>$email_text</strong>",
     };
     const sent = await sgMail.send(msg);
 
