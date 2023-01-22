@@ -63,20 +63,20 @@ const PreviousTranscripts = () => {
         <div className="transcript-titles">
           {/* {data.map((transcriptInfo, i) => (
             <PastTranscriptionTitle
-              transcriptionInfo={{ ...transcriptInfo, order: i }}
+              transcriptionInfo={{ transcriptInfo, order: i }}
             />
           ))} */}
           {transcriptInfo &&
-            transcriptInfo.map((transcriptInfo, i) => {
-              console.log("transcriptionInfo[i]", transcriptInfo[i]);
-              return transcriptInfo?.[i]?.timestamp !== undefined ? (
+            transcriptInfo.map((transcriptInfo, i) =>
+              transcriptInfo?.[i]?.timestamp !== undefined ? (
                 <PastTranscriptionTitle
-                  transcriptionInfo={(transcriptInfo, { order: i })}
+                  transcriptionInfo={{
+                    timestamp: transcriptInfo?.[i]?.timestamp,
+                    order: i,
+                  }}
                 />
-              ) : null;
-            })}
-          {transcriptInfo &&
-            console.log("transcriptInfo[0]", transcriptInfo[0])}
+              ) : null
+            )}
         </div>
       </div>
     </div>
