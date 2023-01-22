@@ -10,6 +10,7 @@ import Highlighter from "react-highlight-words";
 import '../App.css'
 
 
+
 const RecordPageRetry = () => {
   const [input, setInput] = useState("");
   const [recording, setRecording] = useState(false);
@@ -113,6 +114,13 @@ const RecordPageRetry = () => {
     recognizer.stopContinuousRecognitionAsync((res) => {
     });
   };
+
+  const getDef = async () => {
+    api_key = process.env.REACT_APP_DICTIONARY_KEY
+    const response = await fetch('/api/users');
+    return await response.json();
+
+  }
 
   return (
     <div>
