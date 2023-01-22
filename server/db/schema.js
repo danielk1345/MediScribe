@@ -18,6 +18,10 @@ const conversationInfoSchema = new mongoose.Schema(
       required: false,
       type: String,
     },
+    transcript: {
+      required: true,
+      type: String,
+    },
   },
   { collection: "conversations" }
 );
