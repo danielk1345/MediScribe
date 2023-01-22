@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MainPage from "./mainPage/MainPage";
 import MediScribeMain from "./mediScribePage/MediScribeMain";
+import RecordPage from "./RecordPage/RecordPage";
 
 function App() {
   return (
@@ -9,6 +10,9 @@ function App() {
       <Switch>
         <Route path="/MediScribe">
           <MediScribeMain />
+        </Route>
+        <Route path="/test">
+          < RecordPage/>
         </Route>
         <Route path="/">
           <MainPage />
