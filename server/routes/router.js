@@ -4,6 +4,7 @@ import { getSpeechTokenObject } from "./functions/getSpeechTokenObject.js";
 import { setConversationInfo } from "./functions/setConversationInfo.js";
 import { listConversations } from "./functions/listUserConversations.js";
 import { getUserInfo } from "./functions/getUserInfo.js";
+import { deleteTranscript } from "./functions/deleteTranscript.js";
 
 const router = express.Router();
 
@@ -20,5 +21,9 @@ router.get("/speech-token-object", async (req, res) => {
 router.get("/user-convo-info", async (req, res) => listConversations(req, res));
 
 router.get("/user-info", async (req, res) => getUserInfo(req, res));
+
+router.delete("/delete-transcript", async (req, res) =>
+  deleteTranscript(req, res)
+);
 
 export { router };
