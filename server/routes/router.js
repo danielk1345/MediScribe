@@ -2,6 +2,7 @@ import express from "express";
 import { Model } from "../db/schema.js";
 import { setUserInfo } from "./functions/setUserInfo.js";
 import { getSpeechTokenObject } from "./functions/getSpeechTokenObject.js";
+import { setConversationInfo } from "./functions/setConversationInfo.js";
 
 const router = express.Router();
 
