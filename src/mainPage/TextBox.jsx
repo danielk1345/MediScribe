@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
@@ -8,25 +8,26 @@ const firebaseConfig = {
   projectId: "mediscribe-2bee1",
   storageBucket: "mediscribe-2bee1.appspot.com",
   messagingSenderId: "769199842855",
-  appId: "1:769199842855:web:ef12413e691358dfe4d002"
+  appId: "1:769199842855:web:ef12413e691358dfe4d002",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const provider = new GoogleAuthProvider()
-
-const GoogleSignIn = () => {
-  signInWithPopup(auth, provider).then((result) => {
-
-  }).catch((error) => {
-    console.log(error)
-  })
-};
-
+const provider = new GoogleAuthProvider();
 
 const TextBox = () => {
+  const history = useHistory();
+  const GoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        history.push("/MediScribe");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="main-page-text-box-container">
       <div style={{ width: "80%" }}>
@@ -40,7 +41,7 @@ const TextBox = () => {
         health.
       </p>
       <div className="button" onClick={GoogleSignIn}>
-        <Link
+        <div
           to="/MediScribe"
           style={{
             textDecoration: "none",
@@ -49,7 +50,7 @@ const TextBox = () => {
           }}
         >
           Login with Google
-        </Link>
+        </div>
       </div>
     </div>
   );

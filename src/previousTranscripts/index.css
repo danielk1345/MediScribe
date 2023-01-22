@@ -31,10 +31,10 @@
   margin-left: 30px;
   order: 0;
 
-  font-family: "Open Sans";
-  font-style: normal;
+  /* font-family: "Open Sans"; */
+  /* font-style: normal; */
   font-weight: 700;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 33px;
   /* identical to box height */
 
@@ -113,10 +113,10 @@
 
   order: 0;
 
-  font-family: "Open Sans";
-  font-style: normal;
+  /* font-family: "Open Sans";
+  font-style: normal; */
   font-weight: 700;
-  font-size: 20px;
+  font-size: 26px;
   line-height: 33px;
 
   color: #000000;
