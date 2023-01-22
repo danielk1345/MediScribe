@@ -9,6 +9,8 @@ const Live = ({
   transcribing,
   changeTranscribing,
   changeRecording,
+  matchingWords,
+  input,
 }) => {
   return (
     <div className="live-container">
@@ -19,7 +21,12 @@ const Live = ({
           changeTranscribing={changeTranscribing}
           changeRecording={changeRecording}
         />
-        <TranScribe recording={recording} transcribing={transcribing} />
+        <TranScribe
+          recording={recording}
+          transcribing={transcribing}
+          matchingWords={matchingWords}
+          input={input}
+        />
       </div>
       <div className="bottom-one">
         <KeyWordsBox recording={recording} transcribing={transcribing} />

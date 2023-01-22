@@ -58,3 +58,7 @@
   height: 75%;
   margin-bottom: 20px;
 }
+
+.highlight {
+  background-color: rgba(255, 77, 118, 0.5);
+}

@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
 import {
   ResultReason,
@@ -7,8 +6,9 @@ import {
   NoMatchReason,
 } from "microsoft-cognitiveservices-speech-sdk";
 import Highlighter from "react-highlight-words";
-import '../App.css'
-
+import "../App.css";
+import { MedicalTerms } from "../mediScribePage/medTerms";
+// import { MedicalTerms } from "../mediScribePage/transribeBox/medTerms";
 
 const RecordPageRetry = () => {
   const [input, setInput] = useState("");
@@ -17,15 +17,8 @@ const RecordPageRetry = () => {
   const [recognizer, setRecognizer] = useState(null);
   const [showButton, setShowButton] = useState(false);
   const [doneRun, setdoneRun] = useState(false);
-  const [showHighlight, setShowHighlight] = useState(false)
-  const MedicalTerms = ["abdomen", "abortion", "acute", "adhesions", "anaemia", "anaesthesia", "prenatal", "antibiotics", "antibody",
-"autoimmune", "bacteria", "biopsy", "bladder", "bmi", "brca","cancer", "benign", "catheter", "cervix", "cell", "cholesterol", "chromosomes",
-"chronic", "colposcopy", "conception", "condition","contusion",  "diabetes", "diagnosis", "disease", "embryo", "enzyme", "fallopian", "fertility", "fetus",
-"fracture", "gene", "genetic", "genitals","gland", "gonorrhoea", "gynaecologist", "herpes", "horomone", "hiv", "immunity", "immune system", "inflammation", 
-"intensive care unit", "icu", "invasive", "iv", "irritable bowel syndrome", "kidney", "labor", "laxatives", "libido", "lupus", "malignant", "meningitis",
-"menopause", "menstrual", "miscarriage", "obstetrician", "ovaries", "ovulation", "pelvic", "physiotherapy", "period", "placenta",
-"post mortem", "pregnancy", "premature birth", "pubic", "rectum", "transplant","tumor", "uterus", "vagina", "vasectomy", "vein", "virus", "womb"]
-  const [matchingWords, setMatchingWords] = useState([])
+  const [showHighlight, setShowHighlight] = useState(false);
+  const [matchingWords, setMatchingWords] = useState([]);
   const getToken = () => {
     fetch("http://localhost:5000/speech-token-object")
       .then((response) => response.json())
@@ -56,15 +49,13 @@ const RecordPageRetry = () => {
       if (e.result.reason === ResultReason.NoMatch) {
         var noMatchDetail = NoMatchDetails.fromResult(e.result);
         setdoneRun(true);
-        console.log("we reached here")
       } else {
-        console.log(e.result.text)
-        setInput(e.result.text)
+        console.log(e.result.text);
+        setInput(e.result.text);
       }
     };
 
-    newRecognizer.recognizing = function (s, e) {
-    };
+    newRecognizer.recognizing = function (s, e) {};
 
     setRecognizer(newRecognizer);
   }, [data]);
@@ -89,29 +80,25 @@ const RecordPageRetry = () => {
     });
   };
 
-  
-    useEffect(() => {
-      if (doneRun) {
-        console.log("please here")
-        let transcript = input.toLowerCase()
-        let words = []
-        for (let i = 0; i < MedicalTerms.length; ++i) {
-          if (transcript.includes(MedicalTerms[i])) {
-            words.push(MedicalTerms[i])
-          }
+  useEffect(() => {
+    if (doneRun) {
+      let transcript = input.toLowerCase();
+      let words = [];
+      for (let i = 0; i < MedicalTerms.length; ++i) {
+        if (transcript.includes(MedicalTerms[i])) {
+          words.push(MedicalTerms[i]);
         }
-        setdoneRun(false)
-        setMatchingWords(words)
-        setShowHighlight(true)
-        console.log("Show highlight", showHighlight)
       }
-    }, [doneRun])
-  
+      setdoneRun(false);
+      setMatchingWords(words);
+      setShowHighlight(true);
+      console.log("Show highlight", showHighlight);
+    }
+  }, [doneRun]);
 
   const StopRecording = () => {
     setRecording(false);
-    recognizer.stopContinuousRecognitionAsync((res) => {
-    });
+    recognizer.stopContinuousRecognitionAsync((res) => {});
   };
 
   return (
@@ -122,25 +109,32 @@ const RecordPageRetry = () => {
           {recording ? "Stop Recording" : "Start Recording"}
         </button>
       )}
-      {showHighlight && (<Highlighter
-      highlightClassName="YourHighlightClass"
-      searchWords={matchingWords}
-      autoEscape={true}
-      textToHighlight= {input}
-      caseSensitive = {false}
-      highlightTag={CustomHighlight}
-      // highlightStyle = {{color: "black", backgroundColor: "rgba(245, 100, 112, 90)"}}
-      />
+      {showHighlight && (
+        <Highlighter
+          highlightClassName="YourHighlightClass"
+          searchWords={matchingWords}
+          autoEscape={true}
+          textToHighlight={input}
+          caseSensitive={false}
+          highlightTag={CustomHighlight}
+          // highlightStyle = {{color: "black", backgroundColor: "rgba(245, 100, 112, 90)"}}
+        />
       )}
     </div>
   );
 };
 
 const CustomHighlight = (props) => {
-  
   return (
-    <span onClick={()=>{console.log('hi')}} className={'highlight'}>{props.children}</span>
-  )
-}
+    <span
+      onClick={() => {
+        console.log("hi");
+      }}
+      className={"highlight"}
+    >
+      {props.children}
+    </span>
+  );
+};
 
 export default RecordPageRetry;
