@@ -1,6 +1,14 @@
+import { useEffect, useState } from "react";
 import "./KeyWords.css";
 
-const KeyWordsBox = ({ recording, transcribing }) => {
+const KeyWordsBox = ({ recording, transcribing, matchingWords }) => {
+  console.log(matchingWords);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    setText(matchingWords.join(", "));
+  }, [matchingWords]);
+
   return (
     <div className="key-word-box">
       <div className="word-inner-box">
@@ -9,6 +17,8 @@ const KeyWordsBox = ({ recording, transcribing }) => {
           <div className="word-text">
             {recording
               ? "Generating transcript keywords . . . "
+              : text
+              ? text
               : "Start the recording."}
           </div>
         </div>

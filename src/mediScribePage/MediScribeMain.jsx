@@ -136,8 +136,6 @@ const MediScribeMain = () => {
         page={page}
         disablePrev={recording || transcribing}
       />
-      <div>first {input}</div>
-      <div>someting {masterString}</div>
       <div className="body-container">
         {page ? (
           <Live

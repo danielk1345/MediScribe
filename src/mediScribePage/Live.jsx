@@ -29,7 +29,11 @@ const Live = ({
         />
       </div>
       <div className="bottom-one">
-        <KeyWordsBox recording={recording} transcribing={transcribing} />
+        <KeyWordsBox
+          recording={recording}
+          transcribing={transcribing}
+          matchingWords={matchingWords}
+        />
       </div>
     </div>
   );
