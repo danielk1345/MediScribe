@@ -14,6 +14,7 @@ export const getAllUserConvoInfo = async (userId) => {
     throw new Error("no user specified");
 
   const userInfo = await UserInfoModel.find({ uuid: userId });
+  if (userInfo.length === 0) throw new Error("no user found");
 
   const conversationIds = userInfo[0].conversations;
 

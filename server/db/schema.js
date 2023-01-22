@@ -1,18 +1,5 @@
 import mongoose from "mongoose";
 
-const dataSchema = new mongoose.Schema({
-  name: {
-    required: true,
-    type: String,
-  },
-  age: {
-    required: true,
-    type: Number,
-  },
-});
-
-export const Model = mongoose.model("Data", dataSchema);
-
 const conversationInfoSchema = new mongoose.Schema(
   {
     userId: {
@@ -40,19 +27,22 @@ export const ConvoInfoModel = mongoose.model(
   conversationInfoSchema
 );
 
-const curUserSchema = new mongoose.Schema({
-  name: {
-    required: true,
-    type: String,
+const curUserSchema = new mongoose.Schema(
+  {
+    name: {
+      required: true,
+      type: String,
+    },
+    uuid: {
+      required: true,
+      type: String,
+    },
+    conversations: {
+      require: true,
+      type: Array,
+    },
   },
-  uuid: {
-    required: true,
-    type: String,
-  },
-  conversations: {
-    require: true,
-    type: Array,
-  },
-});
+  { collection: "user_info" }
+);
 
 export const UserInfoModel = mongoose.model("UserInfo", curUserSchema);
