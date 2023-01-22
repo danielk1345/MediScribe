@@ -1,12 +1,15 @@
 import { ConvoInfoModel, UserInfoModel } from "../../db/schema.js";
+import { checkAccount } from "./checkAccount.js";
 
 export const setConversationInfo = async (req, res) => {
   const body = req.body;
+  await checkAccount(body.userId, req.body.name);
+
   const data = new ConvoInfoModel({
     userId: body.userId,
     conversationInfo: body.conversationInfo,
     title: body.title,
-    doctorName: body.doctorName,
+    transcript: body.transcript,
     timestamp: Date.now(),
   });
 
