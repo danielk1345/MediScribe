@@ -1,7 +1,7 @@
-import { Model } from "../db/schema.js";
+import { Model, ConvoInfoModel } from "../../db/schema.js";
 
 export const setConversationInfo = async () => {
-  const data = new Model({
+  const data = new ConvoInfoModel({
     name: "rand_name", //req.body.name,
     age: 9090, // req.body.age,
   });

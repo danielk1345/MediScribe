@@ -44,8 +44,12 @@ export const ConvoInfoModel = mongoose.model(
   conversationInfoSchema
 );
 
-export const userInfoBaseSchema = {
+const curUserSchema = new mongoose.Schema({
   name: {
+    required: true,
+    type: String,
+  },
+  uuid: {
     required: true,
     type: String,
   },
@@ -53,4 +57,6 @@ export const userInfoBaseSchema = {
     require: true,
     type: Array,
   },
-};
+});
+
+export const UserInfoModel = mongoose.model("UserInfo", curUserSchema);
