@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const TextBox = () => {
   return (
-    <div className="container">
+    <div className="main-page-text-box-container">
       <div style={{ width: "80%" }}>
         <h1>Take control of your own health.</h1>
       </div>
