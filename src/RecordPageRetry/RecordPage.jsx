@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
-import { ResultReason } from "microsoft-cognitiveservices-speech-sdk";
+import {
+  ResultReason,
+  NoMatchDetails,
+  NoMatchReason,
+} from "microsoft-cognitiveservices-speech-sdk";
 
 const RecordPageRetry = () => {
   const [input, setInput] = useState(null);
@@ -36,6 +40,38 @@ const RecordPageRetry = () => {
       speechConfig,
       audioConfig
     );
+
+    newRecognizer.recognized = function (s, e) {
+      // Indicates that recognizable speech was not detected, and that recognition is done.
+      if (e.result.reason === ResultReason.NoMatch) {
+        var noMatchDetail = NoMatchDetails.fromResult(e.result);
+        console.log(
+          "\r\n(recognized)  Reason: " +
+            ResultReason[e.result.reason] +
+            " NoMatchReason: " +
+            NoMatchReason[noMatchDetail.reason]
+        );
+      } else {
+        console.log(
+          "\r\n(recognized)  Reason: " +
+            ResultReason[e.result.reason] +
+            " Text: " +
+            e.result.text
+        );
+      }
+    };
+
+    newRecognizer.recognizing = function (s, e) {
+      var str =
+        "(recognizing) Reason: " +
+        ResultReason[e.result.reason] +
+        " Text: " +
+        e.result.text;
+      console.log(str);
+    };
+
+    // console.log("\r\n(recognized)  Reason: " + sdk.ResultReason[e.result.reason] + " Text: " + e.result.text);
+
     setRecognizer(newRecognizer);
   }, [data]);
 
