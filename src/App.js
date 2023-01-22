@@ -4,7 +4,6 @@ import MainPage from "./mainPage/MainPage";
 import MediScribeMain from "./mediScribePage/MediScribeMain";
 import RecordPage from "./RecordPage/RecordPage";
 import RecordPageRetry from "./RecordPageRetry/RecordPage";
-import Test from './Test'
 
 function App() {
   return (
@@ -18,9 +17,6 @@ function App() {
         </Route>
         <Route path="/test2">
           <RecordPageRetry />
-        </Route>
-        <Route path="/test3">
-          <Test />
         </Route>
         <Route path="/">
           <MainPage />

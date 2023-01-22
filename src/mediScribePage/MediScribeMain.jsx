@@ -3,6 +3,7 @@ import Live from "./Live";
 import Previous from "./Previous";
 import Header from "./Header";
 import "./mediScribePage.css";
+import PreviousTranscripts from "../previousTranscripts";
 
 const MediScribeMain = () => {
   const [page, setPage] = useState(true);
@@ -40,7 +41,7 @@ const MediScribeMain = () => {
         {page ? (
           <Live recording={recording} transcribing={transcribing} />
         ) : (
-          <Previous />
+          <PreviousTranscripts />
         )}
       </div>
     </div>
