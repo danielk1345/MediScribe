@@ -22,7 +22,6 @@ const PopUp = ({ openPopup, word, togglePopup, lang }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTranslation(data[0].translations[0].text);
       })
       .catch((err) => console.log(err));
