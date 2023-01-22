@@ -1,0 +1,52 @@
+.main-page-container {
+  background-image: url("../../public/mainBackground.png");
+  /* background-repeat: no-repeat; */
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+}
+
+.header {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 30px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.container {
+  box-shadow: 4px 4px 8px 4px #888888;
+  border-radius: 20px;
+  width: 33%;
+  background-color: #ccdde4;
+  padding: 25px 50px 35px 50px;
+}
+h1 {
+  font-size: 48px;
+  margin: 0;
+  padding: 0;
+}
+p {
+  text-align: justify;
+  font-size: 20px;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 50px;
+  width: 225px;
+  background-color: #5ba3bb;
+  font-size: 20px;
+  text-decoration: none;
+}
