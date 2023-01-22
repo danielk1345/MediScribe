@@ -38,7 +38,7 @@ export const SendPopup = ({open, toggle}) => {
                     <input type="text" name="name" value = {recName} onChange={handleRecName}/>
                     </label>
                     <label className="recEmail"> Recipient email:
-                    <input type="text" name="name" value = {recEmail} onChange={handleUserName}/>
+                    <input type="text" name="name" value = {recEmail} onChange={handleRecEmail}/>
                     </label>
                 <input type="submit" value="Submit" className="submit-button" onClick={() => {
 
