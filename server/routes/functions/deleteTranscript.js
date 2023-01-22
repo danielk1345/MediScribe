@@ -2,7 +2,7 @@ import { UserInfoModel, ConvoInfoModel } from "../../db/schema.js";
 
 export const deleteTranscript = async (req, res) => {
   try {
-    await ConvoInfoModel.find({ _id: req.body.transcriptId }).deleteOne();
+    await ConvoInfoModel.find({ _id: req.body.transcriptId }).deleteMany();
     await UserInfoModel.find({ uuid: req.body.userId }).update({
       $pull: { conversations: req.body.transcriptId },
     });
