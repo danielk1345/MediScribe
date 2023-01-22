@@ -60,6 +60,7 @@
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 15px;
+  font-size: 26px;
 }
 
 .action-button-container {
@@ -79,8 +80,9 @@
   margin-top: 20px;
 
   font-weight: 700;
+  font-size: 20px;
 
-  padding: 12px;
+  padding: 15px 25px;
   border-radius: 20px;
   background-color: white;
 
