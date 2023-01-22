@@ -1,5 +1,7 @@
 import PastTranscriptionTitle from "./pastTranscriptionTitles.jsx";
 import "./index.css";
+import { useEffect, useState } from "react";
+import { getTranscriptions } from "../api/getTranscriptions.js";
 
 const PreviousTranscripts = () => {
   const data = [
@@ -19,6 +21,19 @@ const PreviousTranscripts = () => {
       timestamp: "aslkdjflasjd",
     },
   ];
+
+  const [transcriptInfo, setTranscriptInfo] = useState();
+
+  useEffect(() => {
+    (async () => {
+      const userId = "new_user";
+      const info = await getTranscriptions(userId);
+      setTranscriptInfo(info.conversations);
+      console.log("info", info);
+      console.log("info.conversations", info.conversations);
+      console.log("transcriptionInfo", transcriptInfo);
+    })();
+  }, []);
 
   return (
     <div className="prev-transcript-container">
@@ -46,11 +61,22 @@ const PreviousTranscripts = () => {
       <div className="transcript-list-container">
         <div className="transcript-list-header">Transcript List</div>
         <div className="transcript-titles">
-          {data.map((transcriptInfo, i) => (
+          {/* {data.map((transcriptInfo, i) => (
             <PastTranscriptionTitle
-              transcriptionInfo={(transcriptInfo, { order: i })}
+              transcriptionInfo={{ transcriptInfo, order: i }}
             />
-          ))}
+          ))} */}
+          {transcriptInfo &&
+            transcriptInfo.map((transcriptInfo, i) =>
+              transcriptInfo?.[i]?.timestamp !== undefined ? (
+                <PastTranscriptionTitle
+                  transcriptionInfo={{
+                    timestamp: transcriptInfo?.[i]?.timestamp,
+                    order: i,
+                  }}
+                />
+              ) : null
+            )}
         </div>
       </div>
     </div>

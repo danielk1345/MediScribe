@@ -18,7 +18,9 @@ router.get("/speech-token-object", async (req, res) => {
   getSpeechTokenObject(req, res);
 });
 
-router.get("/user-convo-info", async (req, res) => listConversations(req, res));
+router.post("/user-convo-info", async (req, res) =>
+  listConversations(req, res)
+);
 
 router.get("/user-info", async (req, res) => getUserInfo(req, res));
 
