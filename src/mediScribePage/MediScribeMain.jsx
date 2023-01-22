@@ -39,7 +39,12 @@ const MediScribeMain = () => {
       />
       <div className="body-container">
         {page ? (
-          <Live recording={recording} transcribing={transcribing} />
+          <Live
+            recording={recording}
+            transcribing={transcribing}
+            changeTranscribing={changeTranscribing}
+            changeRecording={changeRecording}
+          />
         ) : (
           <PreviousTranscripts />
         )}
