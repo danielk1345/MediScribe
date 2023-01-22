@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MainPage from "./mainPage/MainPage";
 import MediScribeMain from "./mediScribePage/MediScribeMain";
 import RecordPage from "./RecordPage/RecordPage";
+import RecordPageRetry from "./RecordPageRetry/RecordPage";
 
 function App() {
   return (
@@ -12,7 +13,10 @@ function App() {
           <MediScribeMain />
         </Route>
         <Route path="/test">
-          < RecordPage/>
+          <RecordPage />
+        </Route>
+        <Route path="/test2">
+          <RecordPageRetry />
         </Route>
         <Route path="/">
           <MainPage />
